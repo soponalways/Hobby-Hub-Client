@@ -33,8 +33,8 @@ const NavBar = () => {
             </div>
             <div className="navbar-end">
                 <div className='flex gap-4 md:gap-6 lg:gap-8'>
-                    <NavLink to="/">Login</NavLink>
-                    <NavLink to="/">Register</NavLink>
+                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/register">Register</NavLink>
                 </div>
             </div>
         </div>
