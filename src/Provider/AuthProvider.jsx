@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config';
 
 const AuthProvider = ({ children }) => {
@@ -9,10 +9,14 @@ const AuthProvider = ({ children }) => {
     }; 
     const popUpSignIn = provider => {
         return signInWithPopup(auth, provider); 
+    }; 
+    const passwordSignIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password); 
     }
     const userInfo = {
         createUser, 
-        popUpSignIn
+        popUpSignIn, 
+        passwordSignIn
     }
     return (
         <AuthContext value={userInfo}>
