@@ -12,8 +12,8 @@ const Login = () => {
     }
     return (
         <div className="hero-content">
-            <div className="card bg-base-100 w-full max-w-md shrink-0 shadow-2xl">
-                <h1 className="text-5xl font-bold text-center">Login now!</h1>
+            <div className="card bg-base-200 w-full max-w-md shrink-0 shadow-2xl">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center">Login now!</h1>
                 <div className="card-body">
                     <form onSubmit={handleSubmit} className="fieldset">
                         <label className="label">Email</label>
