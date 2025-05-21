@@ -1,8 +1,12 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router';
 import Logo from '/logo.png'
+import { AuthContext } from '../Provider/AuthContext';
+import { toast } from 'react-toastify';
 
 const NavBar = () => {
+    const { user, logoutUser, setUser } = use(AuthContext);
+    const navigate = useNavigate(); 
     const listItem = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/">All Groups</NavLink></li>
@@ -32,10 +36,36 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className='flex gap-4 md:gap-6 lg:gap-8'>
-                    <NavLink to="/login">Login</NavLink>
-                    <NavLink to="/register">Register</NavLink>
-                </div>
+                {
+                    user ?
+                        <div className='flex gap-4 md:gap-6 lg:gap-8 items-center'>
+                            <div className="avatar tooltip tooltip-left tooltip-primary" data-tip={user?.name}>
+                                <div className="w-12 rounded-full">
+                                    <img src={user?.photo} />
+                                </div>
+                            </div>
+                            <div>
+                                <button
+                                    onClick={() => {
+                                        logoutUser()
+                                        .then(() => {
+                                            toast.success("You have successfully Logout"); 
+                                            navigate('/login'); 
+                                            setUser(null)
+                                        })
+                                        .catch(error => {
+                                            toast.warn(error.message)
+                                        })
+                                    }}
+                                    className='btn btn-primary'>Logout</button>
+                            </div>
+                        </div>
+                        :
+                        <div className='flex gap-4 md:gap-6 lg:gap-8'>
+                            <NavLink to="/login">Login</NavLink>
+                            <NavLink to="/register">Register</NavLink>
+                        </div>
+                }
             </div>
         </div>
     );
