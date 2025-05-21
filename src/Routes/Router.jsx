@@ -3,6 +3,7 @@ import RootLayouts from "../Layouts/RootLayouts";
 import Home from '../Pages/Home'; 
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import CreateGroup from "../Pages/CreateGroup";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path: '/login', 
                 Component: Login ,
+            }, 
+            {
+                path: '/createGroup', 
+                Component: CreateGroup
             }
         ]
     }
