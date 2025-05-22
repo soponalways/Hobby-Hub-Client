@@ -6,7 +6,7 @@ import Footer from '../Components/Footer';
 const RootLayouts = () => {
     return (
         <div className='w-11/12 mx-auto'>
-            <nav>
+            <nav className='sticky top-0 z-10'>
                 <NavBar></NavBar>
             </nav>
             <main className='min-h-[calc(100vh-50vh)]'>
