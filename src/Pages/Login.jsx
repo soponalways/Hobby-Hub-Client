@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 import { toast, Zoom } from 'react-toastify';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
@@ -7,6 +7,8 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 const Login = () => {
     const [passerr, setPasserr] = useState('');
     const { passwordSignIn , popUpSignIn} = use(AuthContext);
+    const location = useLocation(); 
+    console.log(location)
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
