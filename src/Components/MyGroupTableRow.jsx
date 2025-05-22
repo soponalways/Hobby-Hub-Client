@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const MyGroupTableRow = ({group}) => {
-    
+    const navigate = useNavigate(); 
     return (
         <tr>
             <td >
@@ -27,7 +27,7 @@ const MyGroupTableRow = ({group}) => {
             </td>
             <th className='grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3'>
                 <button className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Info</button>
-                <button className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Update</button>
+                <button onClick={() => navigate(`/updateGroup/${group?._id}`)} className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Update</button>
                 <button className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Delete</button>
             </th>
         </tr>
