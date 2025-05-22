@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Banner from '../Components/Banner';
 import BookMarkedCard from '../Components/BookMarkedCard';
 import HowItWorksCard from '../Components/HowItWorksCard';
+import FeaturedGroupCard from '../Components/FeaturedGroupCard';
 
 const Home = () => {
+    const [featuredGroups , setFeaturedGroups] = useState([]); 
+    // Handle side Effect 
+    useEffect(() => {
+        fetch('http://localhost:5000/groupsOngoing')
+        .then(res => res.json())
+        .then(data => {
+            setFeaturedGroups(data)
+        })
+    }, [])
     return (
         <div>
             <header>
                 <Banner></Banner>
             </header>
             <main>
-                <section className='space-y-2 md:space-y-3'>
+                <section>
+                    <h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold md:font-bold mt-3 md:mt-5'>Featured Groups</h1>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5  my-4 md:my-6 lg:my-8'>
+                        {
+                            featuredGroups?.map((featuredGroup, i) => <FeaturedGroupCard key={i} group={featuredGroup}></FeaturedGroupCard>)
+                        }
+                    </div>
+                </section>
+                <section className='space-y-2 md:space-y-3 my-3 md:my-6'>
                     <h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold md:font-bold mt-3 md:mt-5'>Bookmarks </h1>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5  my-4 md:my-6 lg:my-8'>
                         <BookMarkedCard
