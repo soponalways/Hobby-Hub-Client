@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 import { toast, Zoom } from 'react-toastify';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
@@ -8,6 +8,7 @@ const Login = () => {
     const [passerr, setPasserr] = useState('');
     const { passwordSignIn , popUpSignIn} = use(AuthContext);
     const location = useLocation(); 
+    const navigate = useNavigate(); 
     console.log(location)
     const handleSubmit = e => {
         e.preventDefault();
@@ -50,6 +51,11 @@ const Login = () => {
                     }).then(res => res.json())
                         .then(data => {
                             if (data.modifiedCount) {
+                                if(location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have successfully Login', {
                                     position: "top-center",
                                     autoClose: 3000,
@@ -110,6 +116,11 @@ const Login = () => {
                             .then(res => res.json())
                             .then(data => {
                                 if (data.upsertedCount > 0) {
+                                    if (location.state) {
+                                        navigate(location.state)
+                                    } else {
+                                        navigate('/')
+                                    }
                                     toast.success('You have successfully register with Google', {
                                         position: "top-center",
                                         autoClose: 3000,
@@ -124,6 +135,11 @@ const Login = () => {
                                 };
     
                                 if (data.modifiedCount > 0) {
+                                    if (location.state) {
+                                        navigate(location.state)
+                                    } else {
+                                        navigate('/')
+                                    }
                                     toast.success('You have successfully Login with google ', {
                                         position: "top-center",
                                         autoClose: 3000,
@@ -138,6 +154,11 @@ const Login = () => {
                                 };
     
                                 if (data.matchedCount > 0 && data.modifiedCount == 0) {
+                                    if (location.state) {
+                                        navigate(location.state)
+                                    } else {
+                                        navigate('/')
+                                    }
                                     toast.success('You have already Login with google ', {
                                         position: "top-center",
                                         autoClose: 3000,
@@ -198,6 +219,11 @@ const Login = () => {
                             .then(res => res.json())
                             .then(data => {
                                 if (data.upsertedCount > 0) {
+                                    if (location.state) {
+                                        navigate(location.state)
+                                    } else {
+                                        navigate('/')
+                                    }
                                     toast.success('You have successfully register with Github', {
                                         position: "top-center",
                                         autoClose: 3000,
@@ -212,6 +238,11 @@ const Login = () => {
                                 };
     
                                 if (data.modifiedCount > 0) {
+                                    if (location.state) {
+                                        navigate(location.state)
+                                    } else {
+                                        navigate('/')
+                                    }
                                     toast.success('You have successfully Login with Github ', {
                                         position: "top-center",
                                         autoClose: 3000,
@@ -226,6 +257,11 @@ const Login = () => {
                                 };
     
                                 if (data.matchedCount > 0 && data.modifiedCount == 0) {
+                                    if (location.state) {
+                                        navigate(location.state)
+                                    } else {
+                                        navigate('/')
+                                    }
                                     toast.success('You have already Login with Github ', {
                                         position: "top-center",
                                         autoClose: 3000,

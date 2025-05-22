@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 import { toast, Zoom } from 'react-toastify';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
@@ -8,6 +8,8 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 const Register = () => {
     const { createUser, popUpSignIn } = useContext(AuthContext);
     const [passerr, setPasserr] = useState('');
+    const location = useLocation(); 
+    const navigate = useNavigate(); 
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
@@ -54,6 +56,11 @@ const Register = () => {
                     }).then(res => res.json())
                         .then(data => {
                             if (data.insertedId) {
+                                if (location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have successfully Register', {
                                     position: "top-center",
                                     autoClose: 3000,
@@ -113,6 +120,11 @@ const Register = () => {
                         .then(res => res.json())
                         .then(data => {
                             if (data.upsertedCount > 0) {
+                                if (location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have successfully register with Google', {
                                     position: "top-center",
                                     autoClose: 3000,
@@ -127,6 +139,11 @@ const Register = () => {
                             };
 
                             if (data.modifiedCount > 0) {
+                                if (location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have successfully Login with google ', {
                                     position: "top-center",
                                     autoClose: 3000,
@@ -141,6 +158,11 @@ const Register = () => {
                             };
 
                             if (data.matchedCount > 0 && data.modifiedCount == 0) {
+                                if (location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have already Login with google ', {
                                     position: "top-center",
                                     autoClose: 3000,
@@ -201,6 +223,11 @@ const Register = () => {
                         .then(res => res.json())
                         .then(data => {
                             if (data.upsertedCount > 0) {
+                                if (location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have successfully register with Github', {
                                     position: "top-center",
                                     autoClose: 3000,
@@ -215,6 +242,11 @@ const Register = () => {
                             };
 
                             if (data.modifiedCount > 0) {
+                                if (location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have successfully Login with Github ', {
                                     position: "top-center",
                                     autoClose: 3000,
@@ -229,6 +261,11 @@ const Register = () => {
                             };
 
                             if (data.matchedCount > 0 && data.modifiedCount == 0) {
+                                if (location.state) {
+                                    navigate(location.state)
+                                } else {
+                                    navigate('/')
+                                }
                                 toast.success('You have already Login with Github ', {
                                     position: "top-center",
                                     autoClose: 3000,
