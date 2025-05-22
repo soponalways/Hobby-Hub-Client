@@ -25,6 +25,7 @@ const CreateGroup = () => {
             .then(data => {
                 if (data.insertedId) {
                     console.log(data)
+                    form.reset(); 
                     Swal.fire({
                         title: "Group Created Successfully",
                         icon: "success",

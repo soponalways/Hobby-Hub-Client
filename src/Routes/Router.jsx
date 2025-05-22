@@ -5,6 +5,7 @@ import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import CreateGroup from "../Pages/CreateGroup";
 import PrivateRoute from "../Provider/PrivateRoute";
+import AllGroup from "../Pages/AllGroup";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,11 @@ export const router = createBrowserRouter([
             {
                 path: '/createGroup', 
                 element: <PrivateRoute><CreateGroup></CreateGroup></PrivateRoute>
+            }, 
+            {
+                path: '/groups', 
+                Component : AllGroup, 
+                loader: () => fetch('http://localhost:5000/groups'), 
             }
         ]
     }

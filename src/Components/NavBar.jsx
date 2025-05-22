@@ -9,7 +9,7 @@ const NavBar = () => {
     const navigate = useNavigate(); 
     const listItem = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/">All Groups</NavLink></li>
+        <li><NavLink to="/groups">All Groups</NavLink></li>
         <li><NavLink to="/createGroup">Create Group</NavLink></li>
         <li><NavLink to="/">My Groups</NavLink></li>
     </>
