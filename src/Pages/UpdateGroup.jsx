@@ -1,11 +1,11 @@
 import React from 'react';
 import { AuthContext } from '../Provider/AuthContext';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const UpdateGroup = () => {
     const existingGroup = useLoaderData(); 
-    const navigate = useNavigate();
 
     const handleUpdateGroup = e => {
         e.preventDefault();
@@ -25,16 +25,7 @@ const UpdateGroup = () => {
                 if (data.modifiedCount) {
                     console.log(data)
                     form.reset();
-                    Swal.fire({
-                        title: "Group Update Successfully",
-                        icon: "success",
-                        draggable: true,
-                        confirmButtonText: "Go to Group"
-                    }).then(result => {
-                        if (result.isConfirmed) {
-                            navigate(`/group/${existingGroup?._id}`)
-                        }
-                    })
+                    toast.success("Group Updated Successfully")
                 }
             })
     }
