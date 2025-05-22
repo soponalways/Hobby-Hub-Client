@@ -16,7 +16,7 @@ const Banner = () => {
                             <Fade damping={0.2} cascade>
                                 <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-primary my-3 md:my-5 lg:my-5'>
                                     <Typewriter
-                                        words={['A great hobby that includes skating is roller derby.']} />
+                                        words={['Your secret to an organized book club']} />
                                 </h2>
                                 <p className='text-xl md:text-2xl lg:text-3xl font-semibold text-secondary my-2 md:my-3 lg:my-4'>
                                     <Typewriter
@@ -24,7 +24,7 @@ const Banner = () => {
                                         deleteSpeed={40}
                                         loop
                                         cursor cursorBlinking
-                                        words={['Start or Join the scating derby', 'Manage The scating derby Group', 'Roller derby is a high-energy, full-contact sport played on roller skates.']} />
+                                        words={['Start or Join the Book Club', 'Manage The book club', 'Organaized The Book']} />
                                 </p>
                                 <Slide direction='up'>
                                     <button className='btn btn-primary my-1 md:my-2 lg:my-3'>Join Now</button>
@@ -32,12 +32,8 @@ const Banner = () => {
                             </Fade>
                         </div>
                         <div className='md:w-1/2'>
-                            <img src={scating} alt="" />
+                            <img src={bookBanner} alt="" />
                         </div>
-                    </div>
-                    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide4" className="btn btn-circle">❯</a>
                     </div>
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                         <a href="#slide4" className="btn btn-circle">❮</a>
@@ -82,7 +78,7 @@ const Banner = () => {
                             <Fade damping={0.2} cascade>
                                 <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-primary my-3 md:my-5 lg:my-5'>
                                     <Typewriter
-                                        words={['Your secret to an organized book club']} />
+                                        words={['A great hobby that includes skating is roller derby.']} />
                                 </h2>
                                 <p className='text-xl md:text-2xl lg:text-3xl font-semibold text-secondary my-2 md:my-3 lg:my-4'>
                                     <Typewriter
@@ -90,7 +86,7 @@ const Banner = () => {
                                         deleteSpeed={40}
                                         loop
                                         cursor cursorBlinking
-                                        words={['Start or Join the Book Club', 'Manage The book club', 'Organaized The Book']} />
+                                        words={['Start or Join the scating derby', 'Manage The scating derby Group', 'Roller derby is a high-energy, full-contact sport played on roller skates.']} />
                                 </p>
                                 <Slide direction='up'>
                                     <button className='btn btn-primary my-1 md:my-2 lg:my-3'>Join Now</button>
@@ -98,8 +94,12 @@ const Banner = () => {
                             </Fade>
                         </div>
                         <div className='md:w-1/2'>
-                            <img src={bookBanner} alt="" />
+                            <img src={scating} alt="" />
                         </div>
+                    </div>
+                    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                        <a href="#slide2" className="btn btn-circle">❮</a>
+                        <a href="#slide4" className="btn btn-circle">❯</a>
                     </div>
                 </div>
                 <div id="slide4" className="carousel-item relative w-full">

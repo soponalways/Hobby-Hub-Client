@@ -19,7 +19,7 @@ const MyGroups = () => {
         <div>
             <h2 className='text-center text-2xl md:text-3xl lg:text-4xl font-semibold lg:font-bold text-primary my-3 md:my-4 lg:my-5 '>My Total Groups: {groups.length}</h2>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto my-2 md:my-4 lg:my-6">
                 <table className="table table-xs table-pin-rows table-pin-cols">
                     {/* head */}
                     <thead>
