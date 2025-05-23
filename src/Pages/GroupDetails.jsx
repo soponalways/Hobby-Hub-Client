@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
+import moment from 'moment';
 
 const GroupDetails = () => {
+    const [passed ,setPassed] = useState(false)
     const { groupName, category, meetLocation, image, maxMember, startDate, userName, userEmail, userDispalyName, description, creationTime } = useLoaderData(); 
+    console.log(passed)
+    
+    useEffect(() => {
+        const year = moment().format("YYYY"); 
+        const month = moment().format("MM")
+        const day = moment().format("DD")
+        const todayDate = `${year}-${month}-${day}`
 
-
+        const date1 = moment(startDate);
+        const date2 = moment(todayDate)
+        if (date1.isBefore(date2)) {
+            setPassed(true)
+        } else {
+            setPassed(false)
+        }
+    } , [startDate])
     return (
         <div className='space-y-3 md:space-y-4 lg:space-y-5 my-5 md:my-8 lg:my-10'>
             <div className='w-2/7 rounded-2xl'>
@@ -25,6 +41,12 @@ const GroupDetails = () => {
             </div>
 
             <p className='font-semibold text-white/70 my-5 md:my-7 '>Description : {description}</p>
+            <div className='my-6 md:my-8 lg:my-10'>
+                {
+                    passed === false ? <button className='btn btn-primary hover:btn-secondary'>Join Group</button> :
+                        <button className='btn btn-primary hover:btn-secondary'>Group No Longer active</button>
+                }
+            </div>
         </div>
     );
 };
