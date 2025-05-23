@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
-const MyGroupTableRow = ({group}) => {
+const MyGroupTableRow = ({ group, handleDelete }) => {
     const navigate = useNavigate(); 
     return (
         <tr>
@@ -26,9 +27,9 @@ const MyGroupTableRow = ({group}) => {
                 <span className="badge badge-ghost badge-sm">{group?.startDate}</span>
             </td>
             <th className='grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3'>
-                <button className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Info</button>
+                <button onClick={() => navigate(`/group/${group?._id}`)} className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Info</button>
                 <button onClick={() => navigate(`/updateGroup/${group?._id}`)} className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Update</button>
-                <button className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Delete</button>
+                <button onClick={() => handleDelete(group?._id)} className="btn btn-primary btn-xs md:btn-sm hover:btn-secondary">Delete</button>
             </th>
         </tr>
     );

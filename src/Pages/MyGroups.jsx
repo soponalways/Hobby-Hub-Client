@@ -1,12 +1,44 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthContext';
 import MyGroupTableRow from '../Components/MyGroupTableRow';
+import Swal from 'sweetalert2';
 
 const MyGroups = () => {
     const {user} = use(AuthContext); 
     const [groups, setGroups] = useState([]); 
     console.log(groups)
 
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/group/${id}`, {
+                    method: "DELETE"
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount) {
+                            const remaingingGroups = groups?.filter(group => group._id !== id); 
+                            setGroups(remaingingGroups)
+                            
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your group has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
+    
     // Handle Side Effect 
     useEffect(() => {
         fetch(`http://localhost:5000/groups/${user?.email}`)
@@ -31,7 +63,7 @@ const MyGroups = () => {
                     </thead>
                     <tbody>
                         {
-                            groups?.map((group) => <MyGroupTableRow key={group?._id} group={group}></MyGroupTableRow>)
+                            groups?.map((group) => <MyGroupTableRow key={group?._id} group={group} handleDelete={handleDelete}></MyGroupTableRow>)
                         }
                     </tbody>
                 </table>
