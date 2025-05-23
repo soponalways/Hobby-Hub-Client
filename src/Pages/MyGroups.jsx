@@ -6,8 +6,6 @@ import Swal from 'sweetalert2';
 const MyGroups = () => {
     const {user} = use(AuthContext); 
     const [groups, setGroups] = useState([]); 
-    console.log(groups)
-
 
     const handleDelete = id => {
         Swal.fire({

@@ -15,7 +15,6 @@ const Login = () => {
         const formData = new FormData(form);
         const email = formData.get('email');
         const password = formData.get('password')
-        console.log(email, password)
 
         // Reset 
         setPasserr('')
@@ -72,7 +71,6 @@ const Login = () => {
                 }
             })
             .catch(error => {
-                console.log(error.message)
                 toast.warn(error.message, {
                     position: "top-center",
                     autoClose: 3000,
@@ -174,7 +172,6 @@ const Login = () => {
                     }
                 })
                 .catch(error => {
-                    console.log(error.message)
                     toast.warn(error.message, {
                         position: "top-center",
                         autoClose: 3000,
@@ -206,7 +203,6 @@ const Login = () => {
                         const usernameArray = email.split("@");
                         const username = usernameArray[0];
                         const newUser = { name, email, photo, username, emailVerified, uid, creationTime, lastSignInTime };
-                        console.log(newUser)
     
                         fetch('http://localhost:5000/signup', {
                             method: "PUT",
@@ -277,7 +273,6 @@ const Login = () => {
                     }
                 })
                 .catch(error => {
-                    console.log(error.message)
                     toast.warn(error.message, {
                         position: "top-center",
                         autoClose: 3000,

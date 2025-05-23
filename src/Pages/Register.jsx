@@ -77,7 +77,6 @@ const Register = () => {
                 }
             })
             .catch(error => {
-                console.log(error.message)
                 toast.warn(error.message, {
                     position: "top-center",
                     autoClose: 3000,
@@ -179,7 +178,6 @@ const Register = () => {
                 }
             })
             .catch(error => {
-                console.log(error.message)
                 toast.warn(error.message, {
                     position: "top-center",
                     autoClose: 3000,
@@ -211,7 +209,6 @@ const Register = () => {
                     const usernameArray = email.split("@");
                     const username = usernameArray[0];
                     const newUser = { name, email, photo, username, emailVerified, uid, creationTime, lastSignInTime };
-                    console.log(newUser)
 
                     fetch('http://localhost:5000/signup', {
                         method: "PUT",
@@ -282,7 +279,6 @@ const Register = () => {
                 }
             })
             .catch(error => {
-                console.log(error.message)
                 toast.warn(error.message, {
                     position: "top-center",
                     autoClose: 3000,

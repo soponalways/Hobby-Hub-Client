@@ -5,7 +5,6 @@ import moment from 'moment';
 const GroupDetails = () => {
     const [passed ,setPassed] = useState(false)
     const { groupName, category, meetLocation, image, maxMember, startDate, userName, userEmail, userDispalyName, description, creationTime } = useLoaderData(); 
-    console.log(passed)
     
     useEffect(() => {
         const year = moment().format("YYYY"); 

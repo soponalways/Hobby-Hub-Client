@@ -23,7 +23,6 @@ const UpdateGroup = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    console.log(data)
                     form.reset();
                     toast.success("Group Updated Successfully")
                 }

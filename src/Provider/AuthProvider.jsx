@@ -52,7 +52,6 @@ const AuthProvider = ({ children }) => {
         return () => {
             unSubscribe(); 
             setUser(null)
-            console.log("un mount the user")
         }
     }, [])
     return (
