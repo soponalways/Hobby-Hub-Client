@@ -9,7 +9,6 @@ const Login = () => {
     const { passwordSignIn , popUpSignIn} = use(AuthContext);
     const location = useLocation(); 
     const navigate = useNavigate(); 
-    console.log(location)
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;

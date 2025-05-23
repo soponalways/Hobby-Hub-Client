@@ -9,15 +9,20 @@ import AllGroup from "../Pages/AllGroup";
 import MyGroups from "../Pages/MyGroups";
 import UpdateGroup from "../Pages/UpdateGroup";
 import GroupDetails from "../Pages/GroupDetails";
+import Loading from "../Pages/Loading";
+import ErrorPages from "../Pages/ErrorPages";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         Component: RootLayouts,
+        errorElement: <ErrorPages/>,
         children: [
             {
                 index: true, 
                 Component: Home, 
+                loader: () => fetch('http://localhost:5000/groupsOngoing'),
+                HydrateFallback: Loading
             } ,
             {
                 path: '/register' ,
@@ -34,7 +39,8 @@ export const router = createBrowserRouter([
             {
                 path: '/groups', 
                 Component : AllGroup, 
-                loader: () => fetch('http://localhost:5000/groups'), 
+                loader: () => fetch('http://localhost:5000/groups'),
+                HydrateFallback: Loading 
             }, 
             {
                 path: '/myGroups', 
@@ -44,12 +50,18 @@ export const router = createBrowserRouter([
                 path: '/updateGroup/:id', 
                 loader: ({ params }) => fetch(`http://localhost:5000/group/${params.id}`), 
                 element: <PrivateRoute><UpdateGroup></UpdateGroup></PrivateRoute>, 
+                HydrateFallback: Loading
             }, 
             {
                 path: '/group/:id', 
                 element: <PrivateRoute><GroupDetails/></PrivateRoute>, 
-                loader: ({ params }) => fetch(`http://localhost:5000/group/${params.id}`)            
+                loader: ({ params }) => fetch(`http://localhost:5000/group/${params.id}`),
+                HydrateFallback: Loading         
             }
         ]
+    }, 
+    {
+        path: '/*', 
+        element : <ErrorPages/>
     }
 ]);

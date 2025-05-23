@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Banner from '../Components/Banner';
 import BookMarkedCard from '../Components/BookMarkedCard';
 import HowItWorksCard from '../Components/HowItWorksCard';
 import FeaturedGroupCard from '../Components/FeaturedGroupCard';
+import { useLoaderData } from 'react-router';
 
 const Home = () => {
-    const [featuredGroups , setFeaturedGroups] = useState([]); 
-    // Handle side Effect 
-    useEffect(() => {
-        fetch('http://localhost:5000/groupsOngoing')
-        .then(res => res.json())
-        .then(data => {
-            setFeaturedGroups(data)
-        })
-    }, [])
+    const featuredGroups = useLoaderData()
     return (
         <div>
             <header>

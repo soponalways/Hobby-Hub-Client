@@ -6,18 +6,21 @@ import { auth } from '../Firebase/firebase.config';
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null); 
-    console.log(user)
-
+    const [loading , setLoading] = useState(true);
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
     }; 
     const popUpSignIn = provider => {
+        setLoading(true)
         return signInWithPopup(auth, provider); 
     }; 
     const passwordSignIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password); 
     }; 
     const logoutUser = () => {
+        setLoading(true)
         return signOut(auth); 
     }
     const userInfo = {
@@ -27,11 +30,16 @@ const AuthProvider = ({ children }) => {
         popUpSignIn, 
         passwordSignIn, 
         logoutUser, 
+        setLoading, 
+        loading
+
     }; 
 
     // Handle Side Effect 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, savedUser => {
+            setLoading(false); 
+            setUser(savedUser)
             if(savedUser) {
                 // Get User From Database
                 fetch(`http://localhost:5000/user/${savedUser.email}`)
@@ -43,6 +51,7 @@ const AuthProvider = ({ children }) => {
         }); 
         return () => {
             unSubscribe(); 
+            setUser(null)
             console.log("un mount the user")
         }
     }, [])
