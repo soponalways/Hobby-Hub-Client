@@ -59,9 +59,5 @@ export const router = createBrowserRouter([
                 HydrateFallback: Loading         
             }
         ]
-    }, 
-    {
-        path: '/*', 
-        element : <ErrorPages/>
     }
 ]);
