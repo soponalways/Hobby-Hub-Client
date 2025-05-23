@@ -13,7 +13,7 @@ const UpdateGroup = () => {
         const formData = new FormData(form)
         const UpdatedGroup = Object.fromEntries(formData.entries())
 
-        fetch(`http://localhost:5000/updateGroup/${existingGroup?._id}`, {
+        fetch(`https://hobby-hub-chi.vercel.app/updateGroup/${existingGroup?._id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"

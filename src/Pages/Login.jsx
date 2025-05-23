@@ -40,7 +40,7 @@ const Login = () => {
                     const lastSignInTime = user.metadata.lastSignInTime;
                     const email = user.email;
 
-                    fetch("http://localhost:5000/signup", {
+                    fetch("https://hobby-hub-chi.vercel.app/signup", {
                         method: "PATCH",
                         headers: {
                             "content-type": "application/json"
@@ -103,7 +103,7 @@ const Login = () => {
                         const username = usernameArray[0];
                         const newUser = { name, email, photo, username, emailVerified, uid, creationTime, lastSignInTime };
     
-                        fetch('http://localhost:5000/signup', {
+                        fetch('https://hobby-hub-chi.vercel.app/signup', {
                             method: "PUT",
                             headers: {
                                 "content-type": "application/json"
@@ -204,7 +204,7 @@ const Login = () => {
                         const username = usernameArray[0];
                         const newUser = { name, email, photo, username, emailVerified, uid, creationTime, lastSignInTime };
     
-                        fetch('http://localhost:5000/signup', {
+                        fetch('https://hobby-hub-chi.vercel.app/signup', {
                             method: "PUT",
                             headers: {
                                 "content-type": "application/json"

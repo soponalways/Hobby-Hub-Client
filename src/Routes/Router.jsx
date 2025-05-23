@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
             {
                 index: true, 
                 Component: Home, 
-                loader: () => fetch('http://localhost:5000/groupsOngoing'),
+                loader: () => fetch('https://hobby-hub-chi.vercel.app/groupsOngoing'),
                 HydrateFallback: Loading
             } ,
             {
@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
             {
                 path: '/groups', 
                 Component : AllGroup, 
-                loader: () => fetch('http://localhost:5000/groups'),
+                loader: () => fetch('https://hobby-hub-chi.vercel.app/groups'),
                 HydrateFallback: Loading 
             }, 
             {
@@ -48,14 +48,14 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/updateGroup/:id', 
-                loader: ({ params }) => fetch(`http://localhost:5000/group/${params.id}`), 
+                loader: ({ params }) => fetch(`https://hobby-hub-chi.vercel.app/group/${params.id}`), 
                 element: <PrivateRoute><UpdateGroup></UpdateGroup></PrivateRoute>, 
                 HydrateFallback: Loading
             }, 
             {
                 path: '/group/:id', 
                 element: <PrivateRoute><GroupDetails/></PrivateRoute>, 
-                loader: ({ params }) => fetch(`http://localhost:5000/group/${params.id}`),
+                loader: ({ params }) => fetch(`https://hobby-hub-chi.vercel.app/group/${params.id}`),
                 HydrateFallback: Loading         
             }
         ]

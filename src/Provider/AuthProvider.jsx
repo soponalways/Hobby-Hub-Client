@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
             setUser(savedUser)
             if(savedUser) {
                 // Get User From Database
-                fetch(`http://localhost:5000/user/${savedUser.email}`)
+                fetch(`https://hobby-hub-chi.vercel.app/user/${savedUser.email}`)
                     .then(res => res.json())
                     .then(data => {
                         setUser(data)

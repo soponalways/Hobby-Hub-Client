@@ -18,7 +18,7 @@ const MyGroups = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/group/${id}`, {
+                fetch(`https://hobby-hub-chi.vercel.app/group/${id}`, {
                     method: "DELETE"
                 }).then(res => res.json())
                     .then(data => {
@@ -39,7 +39,7 @@ const MyGroups = () => {
     
     // Handle Side Effect 
     useEffect(() => {
-        fetch(`http://localhost:5000/groups/${user?.email}`)
+        fetch(`https://hobby-hub-chi.vercel.app/groups/${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setGroups(data)

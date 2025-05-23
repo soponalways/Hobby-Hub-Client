@@ -47,7 +47,7 @@ const Register = () => {
                         uid: userCredential.user.uid,
                         ...restFormData
                     }
-                    fetch('http://localhost:5000/signup', {
+                    fetch('https://hobby-hub-chi.vercel.app/signup', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json"
@@ -109,7 +109,7 @@ const Register = () => {
                     const username = usernameArray[0];
                     const newUser = { name, email, photo, username, emailVerified, uid, creationTime, lastSignInTime };
 
-                    fetch('http://localhost:5000/signup', {
+                    fetch('https://hobby-hub-chi.vercel.app/signup', {
                         method: "PUT",
                         headers: {
                             "content-type": "application/json"
@@ -210,7 +210,7 @@ const Register = () => {
                     const username = usernameArray[0];
                     const newUser = { name, email, photo, username, emailVerified, uid, creationTime, lastSignInTime };
 
-                    fetch('http://localhost:5000/signup', {
+                    fetch('https://hobby-hub-chi.vercel.app/signup', {
                         method: "PUT",
                         headers: {
                             "content-type": "application/json"
